@@ -11,11 +11,26 @@ let dataGlasses = [
 ];
 console.log(dataGlasses[3]);
 
-const tryMe = (a) => {
+const glassModel = () => {
+    // const [g0, g1, g2, g3, g4, g5, g6, g7, g8, g9] = dataGlasses;
+    let content = '';
+    for (let i = 0; i < dataGlasses.length; i++) {
+        content += `
+            <button style="background:transparent; border:none; outline:none" "cursor:pointer" 
+            onclick="tryMe('${i}')">
+            
+                <img src="${dataGlasses[i].src}" alt="..." height="150" width="150"/>
+
+            </button>
+            `;
+    }
+    document.querySelector('#vglassesList').innerHTML = content;
+}
+const tryMe = (i) => {
     // document.querySelector('#virtualEye').src = picture 
-    console.log('dđ3333');
+    let a=dataGlasses[i];
     let linkImg = ''
-    linkImg = dataGlasses[a].virtualImg
+    linkImg = a.virtualImg
     let photo = '';
     photo += `
         <img src="${linkImg}" alt="" width="100" height="100"/>
@@ -24,37 +39,20 @@ const tryMe = (a) => {
 
     //THÔNG TIN
     let info = '';
-    info +=`
+    info += `
         <div>
-            <span class="text-light font-weight-bold text-uppercase">${dataGlasses[a].brand}
+            <span class="text-light font-weight-bold text-uppercase">${a.brand}
             </span>
-            <span>${dataGlasses[a].color}
+            <span>${a.color}
             </span>
         </div>    
         <span class="bg-danger text-light">
-        ${dataGlasses[a].price}
+        ${a.price}
         </span>
         <p class="text-light mt-2">
-        ${dataGlasses[a].description}
+        ${a.description}
         </p>
     `
-    document.querySelector('#glassesInfo').innerHTML =  info;
+    document.querySelector('#glassesInfo').innerHTML = info;
 }
-
-const glassModel = () => {
-    // const [g0, g1, g2, g3, g4, g5, g6, g7, g8, g9] = dataGlasses;
-    let content = '';
-    for (let i = 0; i < dataGlasses.length; i++) {
-        content += `
-        <button style="background:transparent; border:none; outline:none" "cursor:pointer" 
-        onclick="tryMe('${dataGlasses[i]}')">
-
-            <img src="${dataGlasses[i].src}" alt="..." height="150" width="150"/>
-
-        </button>
-        `;
-    }
-    document.querySelector('#vglassesList').innerHTML = content;
-}
-
-window.onload = glassModel()
+window.onload = () => { glassModel() } 
