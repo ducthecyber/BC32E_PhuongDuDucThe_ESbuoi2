@@ -19,7 +19,7 @@ const glassModel = () => {
             <button style="background:transparent; border:none; outline:none" "cursor:pointer" 
             onclick="tryMe('${i}')">
             
-                <img src="${dataGlasses[i].src}" alt="..." height="150" width="150"/>
+                <img src="${dataGlasses[i].src}" alt="..." height="100" width="160"/>
 
             </button>
             `;
@@ -28,20 +28,21 @@ const glassModel = () => {
 }
 const tryMe = (i) => {
     // document.querySelector('#virtualEye').src = picture 
-    let a=dataGlasses[i];
+    let a = dataGlasses[i];
     let linkImg = ''
     linkImg = a.virtualImg
     let photo = '';
-    photo += `
-        <img src="${linkImg}" alt="" width="100" height="100"/>
-    `
-    document.querySelector('#virtual').innerHTML = photo;
-
-    //THÔNG TIN
     let info = '';
+    photo += `
+        <img src="${linkImg}" alt="" width="100" height="100"
+            style = "display:block; margin-left:auto; margin-right:auto"
+        />
+    `
+
     info += `
         <div>
-            <span class="text-light font-weight-bold text-uppercase">${a.brand}
+            <span class="text-light font-weight-bold text-uppercase">
+            ${a.brand}
             </span>
             <span>${a.color}
             </span>
@@ -53,6 +54,15 @@ const tryMe = (i) => {
         ${a.description}
         </p>
     `
+    document.querySelector('#virtual').innerHTML = photo
+
+    //THÔNG TIN
     document.querySelector('#glassesInfo').innerHTML = info;
+    document.querySelector('#glassesInfo').style.display ="block";
+    document.querySelector('#glassesInfo').setAttribute('id','glasses')
+    
+
 }
 window.onload = () => { glassModel() } 
+
+

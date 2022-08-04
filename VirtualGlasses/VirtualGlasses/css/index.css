@@ -29,13 +29,13 @@ body{
     background-position: center top;
     background-size: cover;
     height: 600px;
+    position: relative;
     
 }
 
 .vglasses__model img{
-    position: absolute;
-    top: 32%;
-    left: 25%;
+    top: 25%;
+    left: 20%;
     width: 238px;
     height: 85px;
     opacity: 0.9;
@@ -60,4 +60,13 @@ body{
 
 #glasses{
     transition: all 0.5s;
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
 }
