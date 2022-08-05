@@ -16,16 +16,19 @@ const glassModel = () => {
     let content = '';
     for (let i = 0; i < dataGlasses.length; i++) {
         content += `
-            <button style="background:transparent; border:none; outline:none" "cursor:pointer" 
-            onclick="tryMe('${i}')">
-            
-                <img src="${dataGlasses[i].src}" alt="..." height="100" width="160"/>
-
-            </button>
-            `;
+        <button style="display:block; background:transparent; border:none; outline:none" "cursor:pointer" 
+        onclick="tryMe('${i}')">
+        
+        <img src="${dataGlasses[i].src}" alt="..." height="100" width="160"/>
+        
+        </button>
+        `;
     }
     document.querySelector('#vglassesList').innerHTML = content;
 }
+
+window.onload = () => { glassModel() }
+
 const tryMe = (i) => {
     // document.querySelector('#virtualEye').src = picture 
     let a = dataGlasses[i];
@@ -35,34 +38,57 @@ const tryMe = (i) => {
     let info = '';
     photo += `
         <img src="${linkImg}" alt="" width="100" height="100"
-            style = "display:block; margin-left:auto; margin-right:auto"
+        style = "display:block; margin-left:auto; margin-right:auto"
         />
-    `
-
+        `
     info += `
-        <div>
+            <div>
             <span class="text-light font-weight-bold text-uppercase">
             ${a.brand}
             </span>
             <span>${a.color}
             </span>
-        </div>    
-        <span class="bg-danger text-light">
-        ${a.price}
-        </span>
-        <p class="text-light mt-2">
-        ${a.description}
-        </p>
+            </div>    
+            <span class="bg-danger text-light">
+            ${a.price}
+            </span>
+            <p class="text-light mt-2">
+            ${a.description}
+            </p>
     `
-    document.querySelector('#virtual').innerHTML = photo
+    //HÌNH ẢNH
+    document.querySelector('#virtual').innerHTML = photo;
 
     //THÔNG TIN
     document.querySelector('#glassesInfo').innerHTML = info;
-    document.querySelector('#glassesInfo').style.display ="block";
-    document.querySelector('#glassesInfo').setAttribute('id','glasses')
-    
+
+    let box = document.querySelector('#glassesInfo')
+    // console.log(i)
+    // if (box.classList.contains('hidden')) {
+    if (box.classList.contains('')) {
+        box.classList.remove('visuallyhidden');
+        setTimeout(function () {
+            box.classList.remove('hidden');
+        }, 5);
+    }
+    else {
+        box.classList.add('visuallyhidden');
+        setTimeout(function () {
+            box.classList.add('hidden');
+        }, 5);
+        // box.addEventListener('transitionend', function (e) {
+        //     box.classList.add('hidden');
+        // }, {
+        //     capture: false,
+        //     once: true,
+        //     passive: false
+        // });
+    }
 
 }
-window.onload = () => { glassModel() } 
+
+
+
+
 
 
